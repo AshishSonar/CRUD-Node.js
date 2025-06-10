@@ -17,8 +17,5 @@ app.get("/", (req, res) => {
   res.send("Hi I am Ashish");
 });
 
-
-
-
-
+// listening on port
 app.listen(3000, () => console.log("server listening on port 3000"));
