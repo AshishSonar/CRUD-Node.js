@@ -1,0 +1,24 @@
+const express = require("express");
+const app = express();
+const db = require("./db");
+const menu = require('./models/menu')
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+
+
+const personRoutes = require('./routes/personRoutes')
+app.use('/person', personRoutes)
+
+const menuRoutes = require("./routes/menuRoutes")
+app.use('/menu', menuRoutes)
+
+app.get("/", (req, res) => {
+  res.send("Hi I am Ashish");
+});
+
+
+
+
+
+app.listen(3000, () => console.log("server listening on port 3000"));
