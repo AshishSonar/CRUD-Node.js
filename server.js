@@ -22,7 +22,7 @@ app.use(passport.initialize())
 const localAuthMiddleware = passport.authenticate('local', {session:false})
 
 const personRoutes = require('./routes/personRoutes')
-app.use('/person',localAuthMiddleware, personRoutes)
+app.use('/person', personRoutes)
 
 const menuRoutes = require("./routes/menuRoutes");
 const Person = require("./models/person");
