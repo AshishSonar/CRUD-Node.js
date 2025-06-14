@@ -1,11 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const menu = require("./../models/menu")
+const upload = require('./../fileUpload')
 
-router.post('/', async (req, res)=>{
+router.post('/',upload.single('photo') , async (req, res)=>{
     try{
-        const data = req.body
-        const newMenu = new menu(data)
+        const {name, price} = req.body
+        
+        //const photopath = req.file ? req.file.path:null
+
+        const photoBase64 = req.file ? req.file.buffer.toString('base64'):null
+
+        const newMenu = new menu({name:name, price:price , photo:photoBase64})
         const response = await newMenu.save()
         console.log('new menu added')
         res.status(200).json(response)

@@ -8,6 +8,9 @@ const menuSchema = new mongoose.Schema({
     price: {
         type: 'number',
         required: true
+    },
+    photo: {
+        type: 'string' // store base 64 encoded data
     }
 })
 
